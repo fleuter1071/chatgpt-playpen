@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yoga Services | Mountain Flow Yoga</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        --sage: #dfe9e0;
+        --forest: #2f4b3f;
+        --accent: #f6b26b;
+        --cream: #fbf7f2;
+      }
+
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--forest);
+      }
+
+      header {
+        background: var(--sage);
+        padding: 48px 24px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.4rem;
+        margin-bottom: 12px;
+      }
+
+      header p {
+        max-width: 720px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        padding: 16px;
+        background: white;
+        border-bottom: 1px solid #e3e3e3;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--forest);
+        font-weight: 600;
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+        display: grid;
+        gap: 32px;
+      }
+
+      .section-heading {
+        margin: 0;
+      }
+
+      .intro-card {
+        background: white;
+        padding: 24px;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .service-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .service-card {
+        background: white;
+        padding: 20px 22px;
+        border-radius: 16px;
+        border: 1px solid rgba(47, 75, 63, 0.12);
+      }
+
+      .service-card h3 {
+        margin-top: 0;
+      }
+
+      .service-card ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+
+      .highlight {
+        background: var(--forest);
+        color: white;
+        padding: 24px;
+        border-radius: 18px;
+      }
+
+      .highlight strong {
+        color: var(--accent);
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .pill {
+        background: var(--sage);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      footer {
+        text-align: center;
+        padding: 24px;
+        background: var(--sage);
+      }
+
+      @media (min-width: 768px) {
+        .service-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Yoga Services &amp; Memberships</h1>
+      <p>
+        Explore the ways you can practice with Maya Patel, from weekly group
+        classes to private sessions and flexible membership plans.
+      </p>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#classes">Classes</a>
+      <a href="#memberships">Memberships</a>
+      <a href="#private">Private Sessions</a>
+    </nav>
+
+    <main>
+      <section class="intro-card" id="classes">
+        <h2 class="section-heading">Class experiences</h2>
+        <p>
+          Each class centers on mindful movement, supportive alignment cues, and
+          a moment of rest. Drop in for a single session or keep a steady rhythm
+          with a membership.
+        </p>
+        <div class="pill-list">
+          <span class="pill">Gentle Vinyasa</span>
+          <span class="pill">Slow Flow</span>
+          <span class="pill">Restorative Yoga</span>
+          <span class="pill">Breath &amp; Meditation</span>
+        </div>
+      </section>
+
+      <section class="service-grid" aria-labelledby="membership-title">
+        <div class="service-card" id="memberships">
+          <h3 id="membership-title">Membership options</h3>
+          <ul>
+            <li><strong>Grounded (4 classes)</strong> · $76 monthly</li>
+            <li><strong>Flowing (8 classes)</strong> · $136 monthly</li>
+            <li><strong>Unlimited</strong> · $175 monthly</li>
+          </ul>
+          <p>
+            Memberships include early booking access, class recording library
+            access, and 10% off workshops.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Single session pricing</h3>
+          <ul>
+            <li><strong>Drop-in class</strong> · $22</li>
+            <li><strong>5-class pack</strong> · $100</li>
+            <li><strong>10-class pack</strong> · $190</li>
+          </ul>
+          <p>
+            Ideal for visitors or anyone building a flexible practice schedule.
+          </p>
+        </div>
+      </section>
+
+      <section class="highlight" id="private">
+        <h2 class="section-heading">Private sessions &amp; small groups</h2>
+        <p>
+          Book a one-on-one or private group session to focus on your personal
+          goals. Every session includes a customized sequence and follow-up
+          practice notes.
+        </p>
+        <p>
+          <strong>Private session</strong>: $110 · 60 minutes<br />
+          <strong>Small group (up to 4)</strong>: $160 · 75 minutes
+        </p>
+      </section>
+
+      <section class="service-card">
+        <h3>Upcoming workshops</h3>
+        <p>
+          Seasonal workshops dive deeper into topics like nervous system support,
+          yoga for runners, and mindful strength. Email for the next schedule or
+          join the newsletter from the home page.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2024 Mountain Flow Yoga · hello@mountainflowyoga.com</p>
+    </footer>
+  </body>
+</html>
