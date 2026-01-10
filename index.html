@@ -77,6 +77,19 @@
         margin-top: 0;
       }
 
+      .instructor-photo {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: 0 12px 24px rgba(47, 75, 63, 0.18);
+        object-fit: cover;
+      }
+
+      .photo-card {
+        overflow: hidden;
+        border-radius: 20px;
+      }
+
       .schedule {
         display: grid;
         gap: 16px;
@@ -184,6 +197,24 @@
           movement and meditation. Her teaching style emphasizes accessibility,
           gentle alignment cues, and compassionate encouragement for every body.
         </p>
+      </section>
+
+      <section class="hero" aria-labelledby="instructor-title">
+        <div class="hero-card photo-card">
+          <img
+            src="https://placehold.co/640x480?text=Yoga+Instructor"
+            alt="Yoga instructor seated in a peaceful studio"
+            class="instructor-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="hero-card">
+          <h2 id="instructor-title">Studio spotlight</h2>
+          <p>
+            Swap in your instructor portrait whenever you're ready. This space
+            is sized to keep the image crisp on desktop and friendly on mobile.
+          </p>
+        </div>
       </section>
     </main>
 
