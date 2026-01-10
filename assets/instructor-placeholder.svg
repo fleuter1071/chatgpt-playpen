@@ -1,0 +1,22 @@
+<svg width="1280" height="960" viewBox="0 0 1280 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e7f0e8" />
+      <stop offset="100%" stop-color="#f9f4ee" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6b26b" />
+      <stop offset="100%" stop-color="#f2c792" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="960" rx="48" fill="url(#bg)" />
+  <circle cx="880" cy="220" r="140" fill="#d6e6d8" />
+  <path d="M360 730C410 650 470 600 540 580C610 560 690 560 760 580C830 600 890 650 940 730" stroke="#2f4b3f" stroke-width="24" stroke-linecap="round" />
+  <circle cx="640" cy="360" r="120" fill="#f6b26b" />
+  <path d="M540 470C560 540 610 580 640 580C670 580 720 540 740 470" stroke="#2f4b3f" stroke-width="20" stroke-linecap="round" />
+  <path d="M520 410C560 390 600 380 640 380C680 380 720 390 760 410" stroke="#2f4b3f" stroke-width="16" stroke-linecap="round" />
+  <path d="M520 360C560 330 600 314 640 314C680 314 720 330 760 360" stroke="#2f4b3f" stroke-width="16" stroke-linecap="round" />
+  <path d="M430 610C470 560 530 520 640 520C750 520 810 560 850 610" fill="url(#accent)" />
+  <text x="80" y="130" font-family="Helvetica, Arial, sans-serif" font-size="52" fill="#2f4b3f" font-weight="600">Yoga Instructor Placeholder</text>
+  <text x="80" y="200" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#2f4b3f" opacity="0.8">Replace with your final portrait</text>
+</svg>
