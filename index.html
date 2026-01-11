@@ -238,6 +238,33 @@
         margin: 0;
       }
 
+      .video-card {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 24px;
+        border: 1px solid var(--slate-200);
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+        display: grid;
+        gap: 16px;
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--slate-900);
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
       .schedule-grid {
         display: grid;
         gap: 16px;
@@ -330,6 +357,7 @@
           <nav class="nav-links">
             <a href="#classes">Classes</a>
             <a href="#features">Approach</a>
+            <a href="#video">Video</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </nav>
@@ -408,6 +436,33 @@
                   lifestyle.
                 </p>
               </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="video">
+          <div class="container">
+            <div class="section-title">
+              <h2>Preview the Mountain Flow experience</h2>
+              <p>
+                Follow a short practice to get a feel for Maya’s pacing, cues,
+                and mindful energy.
+              </p>
+            </div>
+            <div class="video-card">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/FI5ARFlL77s?si=_bzzAI73TcBdtAsM"
+                  title="Mountain Flow Yoga class preview"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <p>
+                Use this 10-minute flow as a gentle reset between meetings or as
+                a warmup before your full-length class.
+              </p>
             </div>
           </div>
         </section>
