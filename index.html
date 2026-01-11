@@ -376,7 +376,9 @@
               sessions that balance movement, mindfulness, and recovery.
             </p>
             <div class="hero-actions">
-              <a class="button-primary" href="#contact">Start your practice</a>
+              <a class="button-primary" id="scroll-to-schedule" href="#contact"
+                >Start your practice</a
+              >
               <a class="button-secondary" href="#about">Meet Maya</a>
             </div>
           </div>
@@ -540,5 +542,22 @@
         © 2024 Mountain Flow Yoga · hello@mountainflowyoga.com
       </footer>
     </div>
+
+    <script>
+      // Smooth-scroll from the "Start your practice" button to the "Upcoming classes" section.
+      document.addEventListener("DOMContentLoaded", function () {
+        var trigger = document.getElementById("scroll-to-schedule");
+        var target = document.getElementById("schedule-title");
+
+        if (!trigger || !target) return;
+
+        trigger.addEventListener("click", function (e) {
+          // Prevent the default jump (it currently points to #contact)
+          e.preventDefault();
+
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    </script>
   </body>
 </html>
