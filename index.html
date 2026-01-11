@@ -85,7 +85,11 @@
         width: 36px;
         height: 36px;
         border-radius: 12px;
-        background: linear-gradient(135deg, var(--indigo-600), var(--emerald-500));
+        background: linear-gradient(
+          135deg,
+          var(--indigo-600),
+          var(--emerald-500)
+        );
         color: var(--white);
         font-weight: 600;
       }
@@ -297,7 +301,11 @@
       }
 
       .cta-panel {
-        background: linear-gradient(135deg, var(--indigo-600), var(--indigo-500));
+        background: linear-gradient(
+          135deg,
+          var(--indigo-600),
+          var(--indigo-500)
+        );
         color: var(--white);
         border-radius: 28px;
         padding: 36px;
@@ -361,7 +369,9 @@
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </nav>
-          <a class="nav-cta" href="#contact">Book a session</a>
+          <a class="nav-cta" id="scroll-to-contact" href="#contact"
+            >Book a session</a
+          >
         </div>
       </header>
 
@@ -379,7 +389,9 @@
               <a class="button-primary" id="scroll-to-schedule" href="#contact"
                 >Start your practice</a
               >
-              <a class="button-secondary" href="#about">Meet Maya</a>
+              <a class="button-secondary" id="scroll-to-about" href="#about"
+                >Meet Maya</a
+              >
             </div>
           </div>
           <div class="hero-card">
@@ -538,25 +550,61 @@
         </section>
       </main>
 
-      <footer>
-        © 2024 Mountain Flow Yoga · hello@mountainflowyoga.com
-      </footer>
+      <footer>© 2024 Mountain Flow Yoga · hello@mountainflowyoga.com</footer>
     </div>
 
     <script>
-      // Smooth-scroll from the "Start your practice" button to the "Upcoming classes" section.
       document.addEventListener("DOMContentLoaded", function () {
-        var trigger = document.getElementById("scroll-to-schedule");
-        var target = document.getElementById("schedule-title");
+        // Reusable smooth-scroll function with speed control
+        function smoothScrollTo(targetY, durationMs) {
+          var startY = window.scrollY || window.pageYOffset;
+          var distance = targetY - startY;
+          var startTime = performance.now();
 
-        if (!trigger || !target) return;
+          function easeInOutCubic(t) {
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
 
-        trigger.addEventListener("click", function (e) {
-          // Prevent the default jump (it currently points to #contact)
-          e.preventDefault();
+          function step(now) {
+            var elapsed = now - startTime;
+            var progress = Math.min(elapsed / durationMs, 1);
+            var eased = easeInOutCubic(progress);
 
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
+            window.scrollTo(0, startY + distance * eased);
+
+            if (progress < 1) requestAnimationFrame(step);
+          }
+
+          requestAnimationFrame(step);
+        }
+
+        // One place to control scroll speed (ms)
+        var SCROLL_DURATION = 900;
+
+        function attachScroll(triggerId, targetId, offset) {
+          var trigger = document.getElementById(triggerId);
+          var target = document.getElementById(targetId);
+
+          if (!trigger || !target) return;
+
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            var targetY =
+              target.getBoundingClientRect().top +
+              window.scrollY -
+              (offset || 0);
+
+            smoothScrollTo(targetY, SCROLL_DURATION);
+          });
+        }
+
+        // Attach scrolling behavior
+        attachScroll("scroll-to-schedule", "schedule-title", 20);
+        attachScroll("scroll-to-about", "about", 20);
+        attachScroll("scroll-to-contact", "contact", 20);
       });
     </script>
   </body>
