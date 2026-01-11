@@ -5,222 +5,485 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mountain Flow Yoga</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
       :root {
         color-scheme: light;
-        font-family: "Helvetica Neue", Arial, sans-serif;
-        --sage: #dfe9e0;
-        --forest: #2f4b3f;
-        --accent: #f6b26b;
-        --cream: #fbf7f2;
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        --slate-950: #0f172a;
+        --slate-900: #111827;
+        --slate-700: #374151;
+        --slate-500: #6b7280;
+        --slate-200: #e5e7eb;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+        --indigo-600: #4f46e5;
+        --indigo-500: #6366f1;
+        --emerald-500: #10b981;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
         margin: 0;
-        background: var(--cream);
-        color: var(--forest);
+        background: var(--slate-50);
+        color: var(--slate-900);
+        line-height: 1.6;
       }
 
-      header {
-        background: var(--sage);
-        padding: 48px 24px;
-        text-align: center;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      header h1 {
-        font-size: 2.6rem;
-        margin-bottom: 12px;
+      img {
+        max-width: 100%;
+        display: block;
       }
 
-      header p {
-        max-width: 640px;
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: min(1120px, 92vw);
         margin: 0 auto;
+      }
+
+      .header {
+        background: var(--white);
+        border-bottom: 1px solid var(--slate-200);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
         font-size: 1.1rem;
       }
 
-      nav {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        padding: 16px;
-        background: white;
-        border-bottom: 1px solid #e3e3e3;
-      }
-
-      nav a {
-        text-decoration: none;
-        color: var(--forest);
+      .brand-badge {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--indigo-600), var(--emerald-500));
+        color: var(--white);
         font-weight: 600;
       }
 
-      main {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 32px 24px 64px;
-        display: grid;
-        gap: 32px;
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-weight: 500;
+        color: var(--slate-700);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: var(--indigo-600);
+        color: var(--white);
+        font-weight: 600;
       }
 
       .hero {
+        padding: 72px 0 32px;
         display: grid;
-        gap: 24px;
+        gap: 36px;
         align-items: center;
       }
 
+      .hero-copy h1 {
+        font-size: clamp(2.4rem, 4vw, 3.5rem);
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+
+      .hero-copy p {
+        color: var(--slate-700);
+        font-size: 1.1rem;
+        margin: 0 0 24px;
+      }
+
+      .eyebrow {
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--slate-500);
+        margin-bottom: 14px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .button-primary {
+        background: var(--indigo-600);
+        color: var(--white);
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button-secondary {
+        padding: 12px 22px;
+        border-radius: 999px;
+        border: 1px solid var(--slate-200);
+        color: var(--slate-700);
+        font-weight: 600;
+        background: var(--white);
+      }
+
       .hero-card {
-        background: white;
+        background: var(--white);
+        border-radius: 24px;
         padding: 24px;
-        border-radius: 18px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+        display: grid;
+        gap: 16px;
       }
 
-      .hero-card h2 {
-        margin-top: 0;
+      .hero-image {
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
       }
 
-      .instructor-photo {
+      .hero-image img {
         width: 100%;
-        height: auto;
-        border-radius: 18px;
-        box-shadow: 0 12px 24px rgba(47, 75, 63, 0.18);
+        height: 100%;
         object-fit: cover;
       }
 
-      .photo-card {
-        overflow: hidden;
-        border-radius: 20px;
+      .hero-stats {
+        display: grid;
+        gap: 16px;
       }
 
-      .schedule {
+      .stat {
+        padding: 16px;
+        border-radius: 16px;
+        background: var(--slate-50);
+        border: 1px solid var(--slate-200);
+      }
+
+      .stat span {
+        display: block;
+        font-weight: 600;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-title h2 {
+        margin: 0 0 12px;
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+      }
+
+      .section-title p {
+        margin: 0;
+        color: var(--slate-700);
+      }
+
+      .feature-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .feature-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 24px;
+        border: 1px solid var(--slate-200);
+        display: grid;
+        gap: 12px;
+      }
+
+      .feature-card h3 {
+        margin: 0;
+      }
+
+      .schedule-grid {
         display: grid;
         gap: 16px;
       }
 
       .schedule-item {
-        background: var(--sage);
-        padding: 16px 20px;
-        border-radius: 12px;
+        background: var(--white);
+        border-radius: 18px;
+        padding: 18px 20px;
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 12px;
+        align-items: center;
+        border: 1px solid var(--slate-200);
+        font-weight: 600;
+        color: var(--slate-700);
+      }
+
+      .testimonial {
+        background: var(--slate-900);
+        color: var(--white);
+        border-radius: 24px;
+        padding: 32px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .testimonial span {
+        color: #c7d2fe;
         font-weight: 600;
       }
 
-      .cta {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        background: var(--forest);
-        color: white;
-        padding: 24px;
-        border-radius: 18px;
+      .cta-panel {
+        background: linear-gradient(135deg, var(--indigo-600), var(--indigo-500));
+        color: var(--white);
+        border-radius: 28px;
+        padding: 36px;
+        display: grid;
+        gap: 16px;
       }
 
-      .cta button {
-        align-self: flex-start;
-        background: var(--accent);
-        color: var(--forest);
-        border: none;
-        padding: 12px 20px;
-        border-radius: 999px;
-        font-weight: 600;
-        cursor: pointer;
+      .cta-panel p {
+        color: #e0e7ff;
+        margin: 0;
       }
 
       footer {
+        padding: 32px 0 48px;
+        color: var(--slate-500);
         text-align: center;
-        padding: 24px;
-        background: var(--sage);
       }
 
-      @media (min-width: 768px) {
+      @media (min-width: 900px) {
         .hero {
-          grid-template-columns: 1.2fr 1fr;
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .hero-stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .feature-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .schedule-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav-links {
+          display: none;
+        }
+
+        .schedule-item {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Mountain Flow Yoga</h1>
-      <p>
-        Breathe deeply, move intentionally, and reconnect with your inner calm.
-        Join certified yoga teacher Maya Patel for grounding flows and restorative
-        classes in the heart of the city.
-      </p>
-    </header>
+    <div class="page">
+      <header class="header">
+        <div class="container nav">
+          <div class="brand">
+            <span class="brand-badge">MF</span>
+            Mountain Flow Yoga
+          </div>
+          <nav class="nav-links">
+            <a href="#classes">Classes</a>
+            <a href="#features">Approach</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a class="nav-cta" href="#contact">Book a session</a>
+        </div>
+      </header>
 
-    <nav>
-      <a href="services.html">Services</a>
-      <a href="#classes">Classes</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <main>
-      <section class="hero" id="classes">
-        <div class="hero-card">
-          <h2>Weekly Classes</h2>
-          <p>
-            Whether you're brand new to yoga or looking to deepen your practice,
-            there's a class for you. Expect a blend of gentle vinyasa, mindful
-            breathwork, and guided relaxation.
-          </p>
-          <div class="schedule">
-            <div class="schedule-item">
-              <span>Monday · Sunrise Flow</span>
-              <span>7:00 AM</span>
-            </div>
-            <div class="schedule-item">
-              <span>Wednesday · Core &amp; Calm</span>
-              <span>6:30 PM</span>
-            </div>
-            <div class="schedule-item">
-              <span>Saturday · Restorative Reset</span>
-              <span>9:00 AM</span>
+      <main>
+        <section class="container hero" id="classes">
+          <div class="hero-copy">
+            <p class="eyebrow">New to in-studio + virtual classes</p>
+            <h1>Grounded, modern yoga for busy humans.</h1>
+            <p>
+              Flow with intention, breathe deeper, and build strength with a
+              practice designed for real life. Join Maya Patel for calm, focused
+              sessions that balance movement, mindfulness, and recovery.
+            </p>
+            <div class="hero-actions">
+              <a class="button-primary" href="#contact">Start your practice</a>
+              <a class="button-secondary" href="#about">Meet Maya</a>
             </div>
           </div>
-        </div>
-        <div class="cta" id="contact">
-          <h2>Book a private session</h2>
-          <p>
-            Personalized yoga sessions are available in studio or at home. Let's
-            craft a practice that supports your goals, energy, and lifestyle.
-          </p>
-          <button type="button">Schedule a call</button>
-        </div>
-      </section>
+          <div class="hero-card">
+            <div class="hero-image">
+              <img
+                src="assets/Gemini_Generated_Image_twcjvftwcjvftwcj (1).png"
+                alt="Yoga instructor smiling in a bright studio"
+                loading="lazy"
+              />
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <span>500-hour certified</span>
+                Trauma-informed, alignment focused guidance.
+              </div>
+              <div class="stat">
+                <span>Small-group sessions</span>
+                Intentional class sizes for personalized cues.
+              </div>
+              <div class="stat">
+                <span>Studio + virtual</span>
+                Join on your mat, wherever you are.
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <section class="hero-card" id="about">
-        <h2>Meet Maya</h2>
-        <p>
-          Maya is a 500-hour certified yoga teacher specializing in mindful
-          movement and meditation. Her teaching style emphasizes accessibility,
-          gentle alignment cues, and compassionate encouragement for every body.
-        </p>
-      </section>
+        <section class="section" id="features">
+          <div class="container">
+            <div class="section-title">
+              <h2>Your weekly reset, built around your schedule.</h2>
+              <p>
+                Focused flows, breathwork, and recovery tools to keep your energy
+                grounded.
+              </p>
+            </div>
+            <div class="feature-grid">
+              <article class="feature-card">
+                <h3>Vinyasa + strength</h3>
+                <p>
+                  Dynamic sequences that build heat, improve mobility, and leave
+                  you feeling energized.
+                </p>
+              </article>
+              <article class="feature-card">
+                <h3>Restorative reset</h3>
+                <p>
+                  Slow, prop-supported classes designed to calm your nervous
+                  system and deepen rest.
+                </p>
+              </article>
+              <article class="feature-card">
+                <h3>Private coaching</h3>
+                <p>
+                  One-on-one sessions tailored to your body, your goals, and your
+                  lifestyle.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
 
-      <section class="hero" aria-labelledby="instructor-title">
-        <div class="hero-card photo-card">
-          <img
-            src="assets/Gemini_Generated_Image_twcjvftwcjvftwcj (1).png"
-            alt="Illustrated yoga instructor placeholder"
-            class="instructor-photo"
-            loading="lazy"
-          />
-        </div>
-        <div class="hero-card">
-          <h2 id="instructor-title">Studio spotlight</h2>
-          <p>
-            Swap in your instructor portrait whenever you're ready. This space
-            is sized to keep the image crisp on desktop and friendly on mobile.
-          </p>
-        </div>
-      </section>
-    </main>
+        <section class="section" id="about">
+          <div class="container">
+            <div class="section-title">
+              <h2>Meet your instructor</h2>
+              <p>
+                Maya blends mindful sequencing with compassionate coaching for a
+                supportive practice.
+              </p>
+            </div>
+            <div class="testimonial">
+              <span>Client note</span>
+              <p>
+                “Maya’s classes helped me feel strong and calm again. The cues
+                are clear, the playlist is soothing, and I always leave feeling
+                centered.”
+              </p>
+              <strong>— Elise R., wellness founder</strong>
+            </div>
+          </div>
+        </section>
 
-    <footer>
-      <p>© 2024 Mountain Flow Yoga · hello@mountainflowyoga.com</p>
-    </footer>
+        <section class="section" aria-labelledby="schedule-title">
+          <div class="container">
+            <div class="section-title">
+              <h2 id="schedule-title">Upcoming classes</h2>
+              <p>Choose a weekly anchor or drop in for a reset.</p>
+            </div>
+            <div class="schedule-grid">
+              <div class="schedule-item">
+                <span>Monday · Sunrise Flow</span>
+                <span>7:00 AM</span>
+              </div>
+              <div class="schedule-item">
+                <span>Wednesday · Core & Calm</span>
+                <span>6:30 PM</span>
+              </div>
+              <div class="schedule-item">
+                <span>Friday · Slow Vinyasa</span>
+                <span>8:00 AM</span>
+              </div>
+              <div class="schedule-item">
+                <span>Saturday · Restorative Reset</span>
+                <span>9:00 AM</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="contact">
+          <div class="container">
+            <div class="cta-panel">
+              <h2>Ready to build your practice?</h2>
+              <p>
+                Book a private session or drop into a weekly class. Let’s build
+                a plan that fits your energy and goals.
+              </p>
+              <div class="hero-actions">
+                <a class="button-primary" href="mailto:hello@mountainflowyoga.com"
+                  >Email Maya</a
+                >
+                <a class="button-secondary" href="tel:+15555551234"
+                  >Call the studio</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        © 2024 Mountain Flow Yoga · hello@mountainflowyoga.com
+      </footer>
+    </div>
   </body>
 </html>
