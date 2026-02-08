@@ -205,6 +205,24 @@
         font-weight: 600;
       }
 
+      .weather-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.95rem;
+        color: var(--slate-700);
+      }
+
+      .weather-meta strong {
+        font-size: 1.4rem;
+        color: var(--slate-900);
+      }
+
+      .weather-updated {
+        font-size: 0.8rem;
+        color: var(--slate-500);
+      }
+
       .section {
         padding: 64px 0;
       }
@@ -403,6 +421,14 @@
               />
             </div>
             <div class="hero-stats">
+              <div class="stat">
+                <span>Boston weather now</span>
+                <div class="weather-meta" id="weather-status">
+                  <strong>Loading…</strong>
+                  <span>Fetching current conditions.</span>
+                </div>
+                <div class="weather-updated" id="weather-updated"></div>
+              </div>
               <div class="stat">
                 <span>500-hour certified</span>
                 Trauma-informed, alignment focused guidance.
@@ -605,6 +631,77 @@
         attachScroll("scroll-to-schedule", "schedule-title", 20);
         attachScroll("scroll-to-about", "about", 20);
         attachScroll("scroll-to-contact", "contact", 20);
+
+        var weatherStatus = document.getElementById("weather-status");
+        var weatherUpdated = document.getElementById("weather-updated");
+
+        if (weatherStatus && weatherUpdated) {
+          var weatherLabels = {
+            0: "Clear",
+            1: "Mainly clear",
+            2: "Partly cloudy",
+            3: "Overcast",
+            45: "Fog",
+            48: "Depositing rime fog",
+            51: "Light drizzle",
+            53: "Drizzle",
+            55: "Dense drizzle",
+            56: "Freezing drizzle",
+            57: "Heavy freezing drizzle",
+            61: "Light rain",
+            63: "Rain",
+            65: "Heavy rain",
+            66: "Freezing rain",
+            67: "Heavy freezing rain",
+            71: "Light snow",
+            73: "Snow",
+            75: "Heavy snow",
+            77: "Snow grains",
+            80: "Rain showers",
+            81: "Heavy rain showers",
+            82: "Violent rain showers",
+            85: "Snow showers",
+            86: "Heavy snow showers",
+            95: "Thunderstorm",
+            96: "Thunderstorm with hail",
+            99: "Severe thunderstorm with hail"
+          };
+
+          var weatherEndpoint =
+            "https://api.open-meteo.com/v1/forecast?latitude=42.3601&longitude=-71.0589&current_weather=true&temperature_unit=fahrenheit";
+
+          fetch(weatherEndpoint)
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error("Weather request failed.");
+              }
+              return response.json();
+            })
+            .then(function (data) {
+              if (!data || !data.current_weather) {
+                throw new Error("Weather data unavailable.");
+              }
+
+              var temperature = Math.round(data.current_weather.temperature);
+              var weatherCode = data.current_weather.weathercode;
+              var condition =
+                weatherLabels[weatherCode] || "Seasonal mix";
+
+              weatherStatus.innerHTML =
+                "<strong>" +
+                temperature +
+                "°F</strong><span>" +
+                condition +
+                "</span>";
+              weatherUpdated.textContent =
+                "Updated " + data.current_weather.time.replace("T", " · ");
+            })
+            .catch(function () {
+              weatherStatus.innerHTML =
+                "<strong>Unavailable</strong><span>Check back soon.</span>";
+              weatherUpdated.textContent = "";
+            });
+        }
       });
     </script>
   </body>
